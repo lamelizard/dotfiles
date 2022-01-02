@@ -1,0 +1,35 @@
+# sets PS1
+
+# check if inside a chroot
+if [ -z "$debian_chroot" ] && [ -r /etc/debian_chroot ]; then
+    debian_chroot=$(cat /etc/debian_chroot)
+fi
+
+#show user@host iff ssh-ing
+if [ -n "$SSH_CLIENT" ] || [ -n "$SSH_TTY" ]; then
+        ps_user="\u"
+		ps_host="\h"
+fi
+
+# __git_ps1 settings
+# set to empty if promt slows down for big repositories
+export GIT_PS1_SHOWDIRTYSTATE=1
+export GIT_PS1_SHOWSTASHSTATE=1
+export GIT_PS1_SHOWUNTRACKEDFILES=
+export GIT_PS1_SHOWUPSTREAM="auto"
+export GIT_PS1_SHOWCOLORHINTS=1
+
+PS1=''
+PS1+='${debian_chroot:+${White}($debian_chroot)}'
+PS1+='${ps_user:+${Blue}$ps_user}'
+if [ -z "ps_user" ] && [ -z "ps_host" ]; then
+  PS1+="${White}@"
+fi
+PS1+='${ps_host:+${Green}$ps_host}'
+PS1+=" ${Cyan}\w"
+if command -v __git_ps1 &> /dev/null; then
+  PS1+='$(__git_ps1 " |%s|")'
+fi
+PS1+="${Cyan} \$>${Blue}>${Color_Off} "
+
+
