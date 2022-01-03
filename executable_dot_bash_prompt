@@ -11,14 +11,6 @@ if [ -n "$SSH_CLIENT" ] || [ -n "$SSH_TTY" ]; then
 		ps_host="\h"
 fi
 
-# __git_ps1 settings
-# set to empty if promt slows down for big repositories
-export GIT_PS1_SHOWDIRTYSTATE=1
-export GIT_PS1_SHOWSTASHSTATE=1
-export GIT_PS1_SHOWUNTRACKEDFILES=
-export GIT_PS1_SHOWUPSTREAM="auto"
-export GIT_PS1_SHOWCOLORHINTS=1
-
 PS1=''
 PS1+='${debian_chroot:+${White}($debian_chroot)}'
 PS1+='${ps_user:+${Blue}$ps_user}'
