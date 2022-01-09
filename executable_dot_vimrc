@@ -1,3 +1,15 @@
+" install vim-plug: https://github.com/junegunn/vim-plug
+" run :PlugUpdate
+call plug#begin()
+Plug 'junegunn/fzf'
+" fanfigtastic requires repeat
+Plug 'tpope/vim-repeat'
+Plug 'dahu/vim-fanfingtastic'
+" On-demand loading
+" Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
+Plug 'preservim/nerdtree'
+call plug#end()
+
 " don't be vi compatible
 set nocompatible
 
