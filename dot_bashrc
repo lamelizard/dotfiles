@@ -7,6 +7,9 @@ esac
 # edit like vi
 # set -o vi
 
+#don't write "cd"
+shopt -s autocd
+
 #enable globstar **
 shopt -s globstar
 
