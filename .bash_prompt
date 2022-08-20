@@ -23,5 +23,3 @@ if command -v __git_ps1 &> /dev/null; then
   PS1+='$(__git_ps1 " |%s|")'
 fi
 PS1+="${Cyan} \$>${Blue}>${Color_Off} "
-
-
