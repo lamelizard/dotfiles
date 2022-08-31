@@ -22,4 +22,8 @@ Plug 'dense-analysis/ale'
 "tags
 Plug 'ludovicchabant/vim-gutentags'
 
+"autocomplete
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
+":CocInstall coc-vimtex coc-clangd coc-cmake coc-docker coc-symbol-line
+
 call plug#end()
