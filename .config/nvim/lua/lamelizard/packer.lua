@@ -38,6 +38,7 @@ packer.startup(function(use)
 		  -- LSP Support
 		  {'neovim/nvim-lspconfig'},
       {'jose-elias-alvarez/null-ls.nvim', -- many programs wrapped to LSP
+        requires={{'nvim-lua/plenary.nvim'}},
         config=function() require'lamelizard.null-ls' end,
       },
       {'williamboman/mason.nvim', -- install LSPs
