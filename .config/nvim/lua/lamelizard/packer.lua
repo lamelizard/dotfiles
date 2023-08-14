@@ -7,7 +7,9 @@ packer.startup(function(use)
   use {'wbthomason/packer.nvim'}
   -- navigation
   use {'junegunn/fzf', run = ":call fzf#install()"}
-  use {'junegunn/fzf.vim'}
+  use {'junegunn/fzf.vim',
+    config=function() require'lamelizard.fzf' end,
+  }
   -- better search f,t
   use {
     'dahu/vim-fanfingtastic',
@@ -18,6 +20,8 @@ packer.startup(function(use)
   --use {'honza/vim-snippets'}
   use {'L3MON4D3/LuaSnip'}
   use {'rafamadriz/friendly-snippets'}
+  -- git diff markers
+  --use {'airblade/vim-gitgutter'}
   -- latex
   use {'lervag/vimtex',
         config=function() require'lamelizard.vimtex' end,
@@ -62,6 +66,11 @@ packer.startup(function(use)
 	  },
     config=function() require'lamelizard.lsp' end,
   }
+
+  -- higlight occurances of word under cursor
+  --use {'RRethy/vim-illuminate'}
+  -- show registers using ""
+  use {'gennaro-tedesco/nvim-peekup'}
 
   -- colorscheme
   use {'rose-pine/neovim',
