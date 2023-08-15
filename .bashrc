@@ -17,6 +17,9 @@ shopt -s globstar
 # update the values of LINES and COLUMNS.
 shopt -s checkwinsize
 
+# Path
+export PATH="$HOME/.bin:$PATH"
+
 # Alias definitions.
 if [ -f ~/.bash_aliases ]; then
     . ~/.bash_aliases
@@ -57,7 +60,7 @@ if [ -x /usr/bin/dircolors ]; then
     alias grep='grep --color=auto'
     alias fgrep='fgrep --color=auto'
     alias egrep='egrep --color=auto'
-	alias diff='diff --color=auto'
+    alias diff='diff --color=auto'
 fi
 
 #untested:
