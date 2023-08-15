@@ -13,3 +13,12 @@ apt-get --no-install-recommends install -y \
 # s. https://github.com/sharkdp/fd
 mkdir -p ~/.bin
 ln -fs $(which fdfind) ~/.bin/fd
+
+# git with credential store
+apt-get --no-install-recommends install -y \
+  git \
+  libsecret-1-0 \
+  libsecret-1-dev
+make -C /usr/share/doc/git/contrib/credential/libsecret
+git config --global credential.helper \
+  /usr/share/doc/git/contrib/credential/libsecret/git-credential-libsecret

@@ -9,14 +9,6 @@ apt-get --no-install-recommends install -y \
   mingw-w64 \
   cmake \
   cmake-curses-gui
-# git with credential store
-apt-get --no-install-recommends install -y \
-  git \
-  libsecret-1-0 \
-  libsecret-1-dev
-make -C /usr/share/doc/git/contrib/credential/libsecret
-git config --global credential.helper \
-  /usr/share/doc/git/contrib/credential/libsecret/git-credential-libsecret
 # emscripten requirements
 apt-get --no-install-recommends install -y \
   git \
