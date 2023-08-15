@@ -21,9 +21,9 @@ apt-get --no-install-recommends install -y \
 # https://stackoverflow.com/questions/38859145/detect-ubuntu-on-windows-vs-native-ubuntu-from-bash-script
 if grep -qi microsoft /proc/version; then
   # WSL -> use Git for windows, rather hard coded...
+  # https://learn.microsoft.com/en-us/windows/wsl/tutorials/wsl-git
   echo "WSL: using Git for Windows credential manager"
-  git config --global credential.helper \
-    "/mnt/c/Program\ Files/Git/mingw64/bin/git-credential-manager.exe"
+  su -c "git config --global credential.helper \"/mnt/c/Program\ Files/Git/mingw64/bin/git-credential-manager.exe\"" $SUDO_USER
 else
   apt-get --no-install-recommends install -y \
     libsecret-1-0 \
