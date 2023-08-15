@@ -19,6 +19,8 @@ shopt -s checkwinsize
 
 # Path
 export PATH="$HOME/.bin:$PATH"
+# snap
+export PATH="/snap/bin:$PATH"
 
 # Alias definitions.
 if [ -f ~/.bash_aliases ]; then
