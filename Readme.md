@@ -10,7 +10,7 @@ git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME checkout -f
 ```
 
 Windows:
-```cmd
+```bat
 :: TODO test me
 git clone --bare https://github.com/lamelizard/dotfiles.git "%USERPROFILE%\.dotfiles"
 :: overrides old settings, create a backup.
