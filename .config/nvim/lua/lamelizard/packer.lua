@@ -6,9 +6,24 @@ packer.startup(function(use)
   -- Packer can manage itself
   use {'wbthomason/packer.nvim'}
   -- navigation
-  use {'junegunn/fzf', run = ":call fzf#install()"}
-  use {'junegunn/fzf.vim',
-    config=function() require'lamelizard.fzf' end,
+  -- fzf still runs commands in WSL every time (slow!)
+  -- https://github.com/junegunn/fzf.vim/issues/1457
+  --use {'junegunn/fzf', run = ":call fzf#install()"}
+  --use {'junegunn/fzf.vim',
+  --  config=function() require'lamelizard.fzf' end,
+  --}
+  use{'nvim-telescope/telescope.nvim',
+    -- update periodically, but use tag to get a stable version
+    tag = '0.1.2',
+    requires = {{'nvim-lua/plenary.nvim'},
+      {'nvim-telescope/telescope-fzf-native.nvim',
+      --warning: does not throw error if it fails,
+      --additionally, it does not seem to work?
+      run = 'cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && '..
+            'cmake --build build --config Release && '..
+            'cmake --install build --prefix build'
+    }},
+    config=function() require'lamelizard.telescope' end,
   }
   -- better search f,t
   use {
