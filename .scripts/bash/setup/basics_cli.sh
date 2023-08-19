@@ -6,13 +6,17 @@ apt-get --no-install-recommends install -y \
   iotop \
   nethogs \
   ripgrep \
-  fd-find
+  fd-find \
+  bat
 
 # create a symlink for fd-find (for debian only...),
 # needs to be added to path
 # s. https://github.com/sharkdp/fd
-mkdir -p ~/.bin
-ln -fs $(which fdfind) ~/.bin/fd
+su -c "mkdir -p ~/.bin" $SUDO_USER
+su -c "ln -fs $(which fdfind) ~/.bin/fd" $SUDO_USER
+# create a symlink for bat (for debian only...),
+# s. https://github.com/sharkdp/bat
+su -c "ln -fs $(which batcat) ~/.bin/bat" $SUDO_USER
 
 # git with credential store
 apt-get --no-install-recommends install -y \
