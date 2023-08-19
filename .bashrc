@@ -27,6 +27,11 @@ if [ -f ~/.bash_aliases ]; then
     . ~/.bash_aliases
 fi
 
+# FZF completion
+if [ -f ~/.bash_fzf ]; then
+    . ~/.bash_fzf
+fi
+
 # prompt
 if [ -f ~/.bash_prompt ]; then
   . ~/.bash_prompt
