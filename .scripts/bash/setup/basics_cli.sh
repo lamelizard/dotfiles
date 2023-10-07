@@ -8,6 +8,14 @@ apt-get --no-install-recommends install -y \
   ripgrep \
   fd-find
 
+# python
+apt-get --no-install-recommends install -y \
+  python3 \
+  python3-pip
+
+# tldr cheat-sheets (needs python3-pip)
+pip install tldr
+
 # create a symlink for fd-find (for debian only...),
 # needs to be added to path
 # s. https://github.com/sharkdp/fd
