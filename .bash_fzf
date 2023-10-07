@@ -1,0 +1,69 @@
+# require fzf and ripgrep, etc
+if command -v fzf &>/dev/null &&
+   command -v fd &>/dev/null &&
+   command -v rg &>/dev/null &&
+   command -v bat &>/dev/null
+then
+  
+  ### list commands ###
+  FD_LIST_EXCLUDES="--exclude \".git\""
+  DIR_LIST_COMMAND="fd --type d --hidden $FD_LIST_EXCLUDES 2>/dev/null"
+  FILE_LIST_COMMAND="fd --type f --hidden $FD_LIST_EXCLUDES 2>/dev/null"
+  ANY_LIST_COMMAND="fd --hidden $FD_LIST_EXCLUDES 2>/dev/null"
+  ### preview commands ###
+  # preview directories
+  if command -v tree &>/dev/null
+  then
+    DIR_PREVIEW_COMMAND="tree -C {} | head -n 100"
+  else
+    DIR_PREVIEW_COMMAND="ls -A --collor -1 {} | head -n 100"
+  fi
+  # preview files
+  FILE_PREVIEW_COMMAND="bat -n --color=always --decorations=always {}"
+  # preview anything
+  ANY_PREVIEW_COMMAND="
+    if [ -d {} ]; then
+      $DIR_PREVIEW_COMMAND
+    elif [ -f {} ]; then
+      $FILE_PREVIEW_COMMAND
+    else
+      echo \"[No Preview Command] {}\"
+    fi"
+
+  ### FZF settings ###
+  export FZF_DEFAULT_COMMAND='fd . --hidden --exclude ".git"'
+  export FZF_DEFAULT_OPTS='--height=60% --layout=reverse --info=inline'
+  # use floating winow if in tmux
+  export FZF_TMUX=1
+  export FZF_TMUX_OPTS="-p -w 90% -h 80%"
+  # fzf-tmux -p starts a popup window
+  # Preview file content using bat
+  export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
+  export FZF_CTRL_T_OPTS="
+    --preview '$ANY_PREVIEW_COMMAND'
+    --bind 'ctrl-/:change-preview-window(down|hidden|)'"
+
+  ### FZF: better bash ###
+  # '**'<TAB>-completion: this should be loaded by itself, is my system broken?
+  # https://github.com/junegunn/fzf/issues/2790
+  if [ -f " /usr/share/bash-completion/completions/fzf" ]; then
+    source  /usr/share/bash-completion/completions/fzf
+  fi
+  # bash key-bindings (debian) (C-t, C-r, Alt-c)
+  if [ -f "/usr/share/doc/fzf/examples/key-bindings.bash" ]; then
+    source /usr/share/doc/fzf/examples/key-bindings.bash
+  fi
+
+  ### bash functions/aliases ###
+  # jump to directory (or just use Alt-c)
+  function jd() {
+    local dir
+    dir=$($DIR_LIST_COMMAND | fzf --preview "$DIR_PREVIEW_COMMAND") &&
+    cd "$dir"
+  }
+  # call command with fzf output
+  function with() {
+    $@ $(fzf)
+  }
+
+fi
