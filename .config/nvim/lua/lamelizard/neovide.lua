@@ -4,7 +4,10 @@ if vim.g.neovide then
   
   --vim.o.guifont = "Source Code Pro:h14"
   
-  vim.keymap.set("n", "<F11>", ":let g:neovide_fullscreen = !g:neovide_fullscreen<CR>")
+  vim.keymap.set("n", "<F11>",
+    ":let g:neovide_fullscreen = !g:neovide_fullscreen<CR>",
+    {desc="toggle fullscreen"}
+  )
   
   --doesn't work?
   -- Ctrl+ and Ctrl- to change scale

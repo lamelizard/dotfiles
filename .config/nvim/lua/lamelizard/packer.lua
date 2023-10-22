@@ -82,6 +82,10 @@ packer.startup(function(use)
     config=function() require'lamelizard.lsp' end,
   }
 
+  use {'folke/which-key.nvim',
+    config=function() require'lamelizard.which-key' end,
+  }
+
   -- higlight occurances of word under cursor
   --use {'RRethy/vim-illuminate'}
   -- show registers using ""

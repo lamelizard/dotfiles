@@ -30,16 +30,16 @@ lsp.on_attach(function(client, bufnr)
   --todo change to own preference
   local opts = {buffer = bufnr, remap = false}
 
-  vim.keymap.set("n", "gd", vim.lsp.buf.definition, opts)
-  vim.keymap.set("n", "K", vim.lsp.buf.hover, opts)
-  vim.keymap.set("n", "<leader>vws", vim.lsp.buf.workspace_symbol, opts)
-  vim.keymap.set("n", "<leader>vd", vim.diagnostic.open_float, opts)
-  vim.keymap.set("n", "[d", vim.diagnostic.goto_next, opts)
-  vim.keymap.set("n", "]d", vim.diagnostic.goto_prev, opts)
-  vim.keymap.set("n", "<leader>vca", vim.lsp.buf.code_action, opts)
-  vim.keymap.set("n", "<leader>vrr", vim.lsp.buf.references, opts)
-  vim.keymap.set("n", "<leader>vrn", vim.lsp.buf.rename, opts)
-  vim.keymap.set("i", "<C-h>", vim.lsp.buf.signature_help, opts)
+  vim.keymap.set("n", "gd", vim.lsp.buf.definition, {unpack(opts), desc="go to definition"})
+  vim.keymap.set("n", "K", vim.lsp.buf.hover, {unpack(opts), desc="hover"})
+  vim.keymap.set("n", "<leader>vws", vim.lsp.buf.workspace_symbol, {unpack(opts), desc=""})
+  vim.keymap.set("n", "<leader>vd", vim.diagnostic.open_float, {unpack(opts), desc="view diagnostics"})
+  vim.keymap.set("n", "[d", vim.diagnostic.goto_next, {unpack(opts), desc="goto next diagnostic"})
+  vim.keymap.set("n", "]d", vim.diagnostic.goto_prev, {unpack(opts), desc="goto previous diagnostic"})
+  vim.keymap.set("n", "<leader>vca", vim.lsp.buf.code_action, {unpack(opts), desc="view code actions"})
+  vim.keymap.set("n", "<leader>vrr", vim.lsp.buf.references, {unpack(opts), desc="view references"})
+  vim.keymap.set("n", "<leader>vrn", vim.lsp.buf.rename, {unpack(opts), desc="rename (lsp)"})
+  vim.keymap.set("i", "<C-h>", vim.lsp.buf.signature_help, {unpack(opts), desc="signature help"})
 end)
 
 -- fin
