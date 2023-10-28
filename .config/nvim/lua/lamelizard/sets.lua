@@ -1,7 +1,7 @@
 --format
 vim.opt.encoding = "utf-8"
 vim.opt.fileformat = "unix"
- 
+
 --Security
 vim.opt.modelines = 0
 
@@ -44,6 +44,8 @@ vim.opt.incsearch = true
 vim.opt.wrapscan = true
 vim.opt.showmatch = true
 
---undo
+--timeout
+vim.o.timeout = true
+vim.o.timeoutlen = 500
 
 --vim.opt.listchars=tab:?\ ,eol:

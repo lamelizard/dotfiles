@@ -28,7 +28,6 @@ vim.keymap.set("n", "<leader>fls", builtin.lsp_document_symbols, {desc="lsp symb
 vim.keymap.set("n", "<leader>flS", builtin.lsp_workspace_symbols, {desc="lsp symbols (workspace)"})
 vim.keymap.set("n", "<leader>flr", builtin.lsp_references, {desc="lsp references"})
 vim.keymap.set("n", "<leader>fld", builtin.lsp_definitions, {desc="lsp definitions"})
-vim.keymap.set("n", "<leader>flD", builtin.lsp_declariations, {desc="lsp declarations"})
 vim.keymap.set("n", "<leader>flI", builtin.lsp_implementations, {desc="lsp implementations"})
 vim.keymap.set("n", "<leader>flt", builtin.lsp_type_definitions, {desc="lsp type definitions"})
 vim.keymap.set("n", "<leader>flci", builtin.lsp_incoming_calls, {desc="lsp incoming calls"})
