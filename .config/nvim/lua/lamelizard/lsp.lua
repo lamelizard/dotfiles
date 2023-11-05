@@ -14,19 +14,15 @@ lsp.ensure_installed({
   'lua_ls'
 })
 
--- completion
-local cmp = require('cmp')
---local cmp_select = {behavior = cmp.SelectBehavior.Select}
-
 -- Fix Undefined global 'vim' while editing vim lua config files
 lsp.configure('lua_ls', {
-    settings = {
-        Lua = {
-            diagnostics = {
-                globals = { 'vim' }
-            }
+  settings = {
+    Lua = {
+      diagnostics = {
+        globals = { 'vim' }
         }
     }
+  }
 })
 
 -- diagnostics
