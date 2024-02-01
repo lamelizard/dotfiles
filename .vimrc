@@ -87,8 +87,9 @@ xnoremap p "_dP
 "delete to nowhere
 nnoremap <leader>d "_d
 vnoremap <leader>d "_d
+"broken in Intellij?:
 "undo only until here
-inoremap . .<c-g>u
-inoremap , ,<c-g>u
-inoremap ; ;<c-g>u
-inoremap ? ?<c-g>u
+"inoremap . .<c-g>u
+"inoremap , ,<c-g>u
+"inoremap ; ;<c-g>u
+"inoremap ? ?<c-g>u
