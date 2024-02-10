@@ -1,2 +1,6 @@
 "" Source your .vimrc
 source ~/.vimrc
+
+:map <leader>ff <Action>(SearchEverywhere)
+:map <leader>fg <Action>(FindInPath)
+:map <leader>fG <Action>(FindInPath)
