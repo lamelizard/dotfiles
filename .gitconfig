@@ -1,0 +1,20 @@
+[user]
+	name = lamelizard
+	email = lamelizard@users.noreply.github.com
+[filter "lfs"]
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process
+	required = true
+	clean = git-lfs clean -- %f
+[push]
+	autoSetupRemote = true
+[rerere]
+	enabled = true
+[init]
+	defaultBranch = main
+[core]
+	autocrlf = true
+[includeIf "hasconfig:remote.*.url:https://git.rwth-aachen.de/**"]
+	path = .gitconfig-work
+
+
