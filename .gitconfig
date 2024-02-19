@@ -14,7 +14,19 @@
 	defaultBranch = main
 [core]
 	autocrlf = true
+[alias]
+	# short log (fits into terminal, (somewhat broken on windows))
+	# https://git-scm.com/docs/pretty-formats
+	l = log --pretty=tformat:'%C(yellow)%h%Creset -%C(red)%d%Creset %<|(-27,trunc)%s %C(green)(%<(11,trunc)%cr)%Creset %C(bold blue)<%<(10,trunc)%an>%Creset' -n 20 --topo-order
+	# long(er) log
+	ll = log --pretty=tformat:'%C(yellow)%h%Creset -%C(red)%d%Creset %s %C(green)(%ad)%Creset %C(bold blue)<%an>%Creset' --topo-order --date=short
+	s = status -sb
+	cm = commit -m
+	fp = push --force-with-lease
+	# branch list local (sorted by last commit)
+	bll = "!git for-each-ref --sort='-committerdate' --format='%(color:yellow)%(objectname:short)%(color:reset) - %(color:green)(%(committerdate:relative))%(color:reset) %(refname:short) %(color:bold blue)<%(authorname)>%(color:reset) %(color:red)[%(worktreepath)]%(color:reset)' refs/heads"
+	# branch list remote (sorted by last commit)
+	blr = "!git for-each-ref --sort='-committerdate' --count=20 --format='%(color:yellow)%(objectname:short)%(color:reset) - %(color:green)(%(authordate:relative))%(color:reset) %(refname:short) %(color:bold blue)<%(authorname)>%(color:reset)' refs/remotes"
+	aliases = config --get-regexp '^alias\\.'
 [includeIf "hasconfig:remote.*.url:https://git.rwth-aachen.de/**"]
 	path = .gitconfig-work
-
-
