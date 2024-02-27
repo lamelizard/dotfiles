@@ -37,5 +37,3 @@
 	aliases = config --get-regexp '^alias\\.'
 [includeIf "hasconfig:remote.*.url:https://git.rwth-aachen.de/**"]
 	path = .gitconfig-work
-[maintenance]
-	repo = C:/git/monticore/monticore
