@@ -23,12 +23,19 @@
 	s = status -sb
 	cm = commit -m
 	fp = push --force-with-lease
+	# note: most do not work with bare repos!
 	# branch list local (sorted by last commit)
 	bll = "!git for-each-ref --sort='-committerdate' --format='%(color:yellow)%(objectname:short)%(color:reset) - %(color:green)(%(committerdate:relative))%(color:reset) %(refname:short) %(color:bold blue)<%(authorname)>%(color:reset) %(color:red)[%(worktreepath)]%(color:reset)' refs/heads"
 	# branch list remote (sorted by last commit)
 	blr = "!git for-each-ref --sort='-committerdate' --count=20 --format='%(color:yellow)%(objectname:short)%(color:reset) - %(color:green)(%(authordate:relative))%(color:reset) %(refname:short) %(color:bold blue)<%(authorname)>%(color:reset)' refs/remotes"
+	# checkout branch using fzf
+	cof = "!checkout_fzf() { git branch | fzf | xargs git checkout; }; checkout_fzf"
+	# add (multiple) files using fzf
+	addf = "!add_fzf() { git status -s | awk '{print $2}' | fzf -m | xargs git add; }; add_fzf"
 	# prefetches regulary to make everything in the repo faster
 	make-fast = maintenance start
 	aliases = config --get-regexp '^alias\\.'
 [includeIf "hasconfig:remote.*.url:https://git.rwth-aachen.de/**"]
 	path = .gitconfig-work
+[maintenance]
+	repo = C:/git/monticore/monticore
