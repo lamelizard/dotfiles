@@ -16,3 +16,21 @@ if not vim.fn.executable('zathura') then
       vim.print("WARN: no default PDF previewer found")
     end
 end
+
+-- concealment (set conceallevel to 1/2 instead of 0 for effect)
+vim.g.vimtex_syntax_conceal = {
+  ['accents'] = 1,
+  ['ligatures'] = 1,
+  ['cites'] = 1,
+  ['fancy'] = 0, -- e.g., '\item' -> circle
+  ['spacing'] = 0, -- hides '\quad' and simmilar
+  ['greek'] = 1,
+  ['math_bounds'] = 1,
+  ['math_delimiters'] = 1,
+  ['math_fracs'] = 1,
+  ['math_super_sub'] = 0, -- e.g., 'x^{2+a}'
+  ['math_symbols'] = 1,
+  ['sections'] = 0,
+  ['styles'] = 0 -- hides? '\emph' and simmilar
+}
+
