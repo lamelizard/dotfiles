@@ -15,6 +15,15 @@ allprojects {
 	        url uri("${projectDir}/../../.mavenLocal")
 	      }
       }
+    } else {
+      _localMavenDir = new File("${projectDir}/../../../.mavenLocal")
+      if (_localMavenDir.exists()) {
+        repositories {
+          maven {
+	          url uri("${projectDir}/../../../.mavenLocal")
+	        }
+        }
+      }
     }
   }
 }
