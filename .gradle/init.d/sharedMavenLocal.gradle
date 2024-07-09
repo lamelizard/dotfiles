@@ -1,10 +1,20 @@
 // for MontiVerse, allows to simply open any of the projects
 allprojects {
   def _localMavenDir = new File("${projectDir}/../.mavenLocal")
-  if (_localMavenDir.exists())
-  repositories {
-    maven {
-	  url uri("${projectDir}/../.mavenLocal")
-	}
+  if (_localMavenDir.exists()) {
+    repositories {
+      maven {
+	      url uri("${projectDir}/../.mavenLocal")
+	    }
+    }
+  } else {
+    _localMavenDir = new File("${projectDir}/../../.mavenLocal")
+    if (_localMavenDir.exists()) {
+      repositories {
+        maven {
+	        url uri("${projectDir}/../../.mavenLocal")
+	      }
+      }
+    }
   }
 }
