@@ -3,16 +3,14 @@ if vim.g.vscode then
   return
 end
 
+require("mason").setup()
+
 -- Lua 5.1 compatibility
 local unpack = unpack or table.unpack
 
 local lsp = require("lsp-zero")
 
 lsp.preset("recommended")
-
-lsp.ensure_installed({
-  'lua_ls'
-})
 
 -- Fix Undefined global 'vim' while editing vim lua config files
 lsp.configure('lua_ls', {
@@ -28,7 +26,7 @@ lsp.configure('lua_ls', {
 -- diagnostics
 vim.keymap.set("n", "[x", vim.diagnostic.goto_next, {desc="goto next diagnostic"})
 vim.keymap.set("n", "]x", vim.diagnostic.goto_prev, {desc="goto previous diagnostic"})
-  vim.keymap.set("n", "<leader>vd", vim.diagnostic.open_float, {desc="view diagnostics"})
+vim.keymap.set("n", "<leader>vd", vim.diagnostic.open_float, {desc="view diagnostics"})
 
 lsp.on_attach(function(client, bufnr)
   --todo change to own preference
@@ -58,6 +56,30 @@ end)
 
 -- fin
 lsp.setup()
+
+require("mason-lspconfig").setup({
+  ensure_installed = {
+    "lua_ls"
+  },
+  -- let lspconfig handle the setup of each server
+  handlers = {
+    function(server_name)
+      require('lspconfig')[server_name].setup({})
+    end,
+  },
+})
+
+local lsp = require("lsp-zero")
+-- Fix Undefined global 'vim' while editing vim lua config files
+lsp.configure('lua_ls', {
+    settings = {
+      Lua = {
+        diagnostics = {
+          globals = { 'vim' }
+          }
+      }
+    }
+  })
 
 -- always allow adding text without changing buffer (e.g. lsp warnings)
 vim.diagnostic.config({

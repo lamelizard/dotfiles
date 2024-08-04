@@ -19,7 +19,7 @@ packer.startup(function(use)
       {'nvim-telescope/telescope-fzf-native.nvim',
       --warning: does not throw error if it fails,
       --additionally, it does not seem to work?
-      run = 'cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && '..
+      run = 'cmake -S . -B build -DCMAKE_BUILD_TYPE=Release && '..
             'cmake --build build --config Release && '..
             'cmake --install build --prefix build'
     }},
@@ -61,11 +61,12 @@ packer.startup(function(use)
         config=function() require'lamelizard.null-ls' end,
       },
       {'williamboman/mason.nvim', -- install LSPs
-        config=function() require'lamelizard.mason' end,
+        --config=function() require'lamelizard.mason' end,
       },
 		  {'williamboman/mason-lspconfig.nvim',
         requires={'williamboman/mason.nvim'},
-        config=function() require'lamelizard.mason-lspconfig' end,
+        -- configured in lsp.lua
+        --config=function() end,
       },
 		  -- Autocompletion
 		  {'hrsh7th/nvim-cmp',

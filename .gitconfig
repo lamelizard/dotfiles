@@ -37,3 +37,5 @@
 	aliases = config --get-regexp '^alias\\.'
 [includeIf "hasconfig:remote.*.url:https://git.rwth-aachen.de/**"]
 	path = .gitconfig-work
+[credential "https://git.rwth-aachen.de"]
+	provider = generic
