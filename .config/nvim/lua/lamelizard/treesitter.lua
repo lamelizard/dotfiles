@@ -21,8 +21,8 @@ require('nvim-treesitter.configs').setup {
     "lua",
     "python",
     -- latex
-    "latex",
-    "bibtex",
+    --"latex",
+    --"bibtex",
     -- stuff
     "diff",
     "dockerfile",
@@ -39,6 +39,14 @@ require('nvim-treesitter.configs').setup {
     "comment", -- TODO, etc.
     "regex",
   },
+
+  ignore_install = {
+    -- latex: has no go to definition
+    -- use either vimtex or texlab from mason
+    "latex",
+    "bibtex",
+  },
+
   -- Install parsers synchronously (only applied to `ensure_installed`)
   sync_install = false,
 

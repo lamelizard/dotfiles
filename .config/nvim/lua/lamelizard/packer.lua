@@ -92,6 +92,10 @@ packer.startup(function(use)
     end,
   }
 
+  use {'preservim/nerdtree',
+    config=function () require'lamelizard.nerdtree' end,
+  }
+
   use {'folke/which-key.nvim',
     config=function() require'lamelizard.which-key' end,
   }
