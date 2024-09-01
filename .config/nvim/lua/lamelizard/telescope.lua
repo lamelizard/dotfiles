@@ -1,3 +1,8 @@
+-- don't do anything if embedded into VSCode
+if vim.g.vscode then
+  return
+end
+
 local telescope = require('telescope')
 telescope.setup{
   extensions = {
@@ -14,7 +19,7 @@ telescope.load_extension('fzf')
 local builtin = require('telescope.builtin')
 
 vim.keymap.set("n", "<leader>ff", function() builtin.find_files{hidden=true} end, {desc="find files"})
-vim.keymap.set("n", "<leader>ffh", builtin.oldfiles, {desc="find files (history)"})
+vim.keymap.set("n", "<leader>fhf", builtin.oldfiles, {desc="find files (history)"})
 -- lines in all open buffers
 vim.keymap.set("n", "<leader>fL", builtin.current_buffer_fuzzy_find, {desc="find lines in buffers"})
 vim.keymap.set("n", "<leader>fb", builtin.buffers, {desc="find buffers"})

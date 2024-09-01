@@ -69,18 +69,6 @@ require("mason-lspconfig").setup({
   },
 })
 
-local lsp = require("lsp-zero")
--- Fix Undefined global 'vim' while editing vim lua config files
-lsp.configure('lua_ls', {
-    settings = {
-      Lua = {
-        diagnostics = {
-          globals = { 'vim' }
-          }
-      }
-    }
-  })
-
 -- always allow adding text without changing buffer (e.g. lsp warnings)
 vim.diagnostic.config({
     virtual_text = true,
