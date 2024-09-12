@@ -5,6 +5,32 @@ end
 
 local telescope = require('telescope')
 telescope.setup{
+  defaults = {
+    file_ignore_patterns = {
+      -- directories
+      '.git/', '.git\\',
+      '.idea/', '.idea\\',
+      -- binary
+      '%.gz',
+      '%.jpg',
+      '%.pdf',
+      '%.png',
+      '%.zip',
+      -- latex
+      '%.acn',
+      '%.aux',
+      '%.glo',
+      '%.idx',
+      '%.ilg',
+      '%.iml',
+      '%.ind',
+      '%.out',
+      '%.synctex',
+      '%.toc',
+      '%.xdy',
+      '%.xmpi',
+    },
+  },
   extensions = {
     fzf = {
       fuzzy = true,
