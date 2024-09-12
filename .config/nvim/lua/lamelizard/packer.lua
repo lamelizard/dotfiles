@@ -96,6 +96,10 @@ packer.startup(function(use)
     config=function () require'lamelizard.nerdtree' end,
   }
 
+  use {'okuuva/auto-save.nvim',
+    config=function () require'lamelizard.auto-save' end,
+  }
+
   use {'folke/which-key.nvim',
     config=function() require'lamelizard.which-key' end,
   }
