@@ -4,6 +4,10 @@ case $- in
     *) return;;
 esac
 
+# allow usage of Ctrl-s
+bind -r '\C-s'
+stty -ixon
+
 # edit like vi
 # set -o vi
 
