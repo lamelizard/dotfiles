@@ -2,6 +2,18 @@
 local packer_bootstrap = require('lamelizard.packer_install').ensure_packer()
 local packer = require('packer')
 
+-- install only packer and exit, as packer is required for all else
+-- need to startup vim twice;
+-- there might be a better option to install during first startup all else
+-- at least this version does not throw errors
+if packer_bootstrap then
+  packer.startup(function(use)
+    use {'wbthomason/packer.nvim'}
+    packer.sync()
+  end)
+  return
+end
+
 packer.startup(function(use)
   -- Packer can manage itself
   use {'wbthomason/packer.nvim'}
@@ -120,11 +132,6 @@ packer.startup(function(use)
     --requires = {'kyazdani42/nvim-web-devicons', opt = true},
     config=function() require'lamelizard.lualine' end,
   }
-
-  -- sync all after auto install
-  if packer_bootstrap then
-    packer.sync()
-  end
 end)
 
 -- autocompile on change
