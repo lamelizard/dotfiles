@@ -3,6 +3,8 @@
 	email = 88034434+SE-FDr@users.noreply.github.com
 [credential "https://git.rwth-aachen.de"]
 	provider = generic
+[credential "https://github.com/MontiCore"]
+	useHttpPath = true
 [core]
 	autocrlf = input
 [filter "lfs"]
