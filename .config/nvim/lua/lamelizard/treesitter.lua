@@ -6,40 +6,47 @@ if vim.g.vscode then
   return
 end
 
-require('nvim-treesitter.configs').setup {
-  -- https://github.com/nvim-treesitter/nvim-treesitter#supported-languages
-  ensure_installed = {
-    -- programming
-    "bash",
-    "c",
-    "cpp",
-    --"glsl",
-    --"hlsl",
-    "cmake",
-    "java",
-    "json",
-    "lua",
-    "python",
-    -- latex
-    --"latex",
-    --"bibtex",
-    -- stuff
-    "diff",
-    "dockerfile",
-    "dot",
-    "vimdoc",
-    "make",
-    "markdown",
-    -- git
-    "git_rebase",
-    "gitattributes",
-    "gitcommit",
-    "gitignore",
-    -- small things
-    "comment", -- TODO, etc.
-    "regex",
-  },
+-- https://github.com/williamboman/mason.nvim/issues/467
+-- https://github.com/nvim-treesitter/nvim-treesitter#supported-languages
+local ensure_installed = {
+  -- programming
+  "bash",
+  "c",
+  "cpp",
+  --"glsl",
+  --"hlsl",
+  "cmake",
+  "java",
+  "json",
+  "lua",
+  "python",
+  -- latex
+  --"latex",
+  --"bibtex",
+  -- stuff
+  "diff",
+  "dockerfile",
+  "dot",
+  "vimdoc",
+  "make",
+  "markdown",
+  -- git
+  "git_rebase",
+  "gitattributes",
+  "gitcommit",
+  "gitignore",
+  -- small things
+  "comment", -- TODO, etc.
+  "regex",
+}
 
+-- to install from shell
+vim.api.nvim_create_user_command("TSInstallAll", function ()
+  vim.cmd("TSInstall " .. table.concat(ensure_installed, " "))
+end, {})
+
+require('nvim-treesitter.configs').setup {
+  ensure_installed = ensure_installed,
   ignore_install = {
     -- latex: has no go to definition
     -- use either vimtex or texlab from mason
