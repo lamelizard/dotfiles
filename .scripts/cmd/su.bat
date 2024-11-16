@@ -5,6 +5,6 @@ if %errorLevel% == 0 (
     echo This Command Prompt is already running as administrator.
 ) else (
     echo Opening a new Windows Terminal as administrator...
-    powershell -Command "Start-Process 'wt.exe' -ArgumentList 'cmd /k cd %CD%' -Verb RunAs"
+    powershell -Command "Start-Process 'wt.exe' -ArgumentList 'cmd /k cd /d %CD%' -Verb RunAs"
     exit
 )
