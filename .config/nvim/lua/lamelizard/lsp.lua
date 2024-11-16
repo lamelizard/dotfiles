@@ -10,8 +10,6 @@ local unpack = unpack or table.unpack
 
 local lsp = require("lsp-zero")
 
-lsp.preset("recommended")
-
 -- Fix Undefined global 'vim' while editing vim lua config files
 lsp.configure('lua_ls', {
   settings = {
