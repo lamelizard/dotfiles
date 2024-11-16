@@ -92,5 +92,5 @@ export SECRET_SEARCH_UNLOCK=1
 
 # start tmux with bash (if it exists)
 if command -v tmux &> /dev/null && [ -n "$PS1" ] && [[ ! "$TERM" =~ screen ]] && [[ ! "$TERM" =~ tmux ]] && [ -z "$TMUX" ]; then
-  exec tmux
+  exec tmux -u
 fi
