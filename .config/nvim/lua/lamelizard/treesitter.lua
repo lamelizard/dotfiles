@@ -42,7 +42,7 @@ local ensure_installed = {
 
 -- to install from shell
 vim.api.nvim_create_user_command("TSInstallAll", function ()
-  vim.cmd("TSInstall " .. table.concat(ensure_installed, " "))
+  vim.cmd("TSInstallSync " .. table.concat(ensure_installed, " "))
 end, {})
 
 require('nvim-treesitter.configs').setup {
