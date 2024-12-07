@@ -41,3 +41,7 @@
 	path = .gitconfig-work
 [credential "https://git.rwth-aachen.de"]
 	provider = generic
+# WSL uses Windows credential manager,
+# at least if it is in a windows folder
+[includeIf "gitdir:/mnt/c/"]
+	path = .gitconfig-wsl
