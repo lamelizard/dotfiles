@@ -45,3 +45,5 @@
 # at least if it is in a windows folder
 [includeIf "gitdir:/mnt/c/"]
 	path = .gitconfig-wsl
+[includeIf "gitdir:/mnt/d/"]
+	path = .gitconfig-wsl
