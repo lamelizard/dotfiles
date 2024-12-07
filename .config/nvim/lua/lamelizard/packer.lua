@@ -93,9 +93,9 @@ packer.startup(function(use)
           --{'micangl/cmp-vimtex'},
           {'kdheepak/cmp-latex-symbols'},
 		      -- Snippets
-		      {'saadparwaiz1/cmp_luasnip'},
-		      {'L3MON4D3/LuaSnip'},
-		      {'rafamadriz/friendly-snippets'},
+		      --{'saadparwaiz1/cmp_luasnip'},
+		      --{'L3MON4D3/LuaSnip'},
+		      --{'rafamadriz/friendly-snippets'},
         },
       },
 	  },
