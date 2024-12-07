@@ -93,9 +93,7 @@ export SECRET_SEARCH_UNLOCK=1
 # start tmux with bash (if it exists)
 if command -v tmux &> /dev/null && [ -n "$PS1" ] && [[ ! "$TERM" =~ screen ]] && [[ ! "$TERM" =~ tmux ]] && [ -z "$TMUX" ]; then
     # Check if a bash -c command is being executed
-  if [[ -n "$BASH_COMMAND" ]]; then
-    exec tmux -u new-session "$BASH_COMMAND"
-  else
+  if [[ ! -n "$BASH_COMMAND" ]]; then
     exec tmux -u
   fi
 fi
