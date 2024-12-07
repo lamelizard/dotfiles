@@ -24,9 +24,9 @@ packer.startup(function(use)
   --use {'junegunn/fzf.vim',
   --  config=function() require'lamelizard.fzf' end,
   --}
-  use{'nvim-telescope/telescope.nvim',
+  use {'nvim-telescope/telescope.nvim',
     -- update periodically, but use tag to get a stable version
-    tag = '0.1.2',
+    tag = '0.1.8',
     requires = {{'nvim-lua/plenary.nvim'},
       {'nvim-telescope/telescope-fzf-native.nvim',
       --warning: does not throw error if it fails,
@@ -68,7 +68,8 @@ packer.startup(function(use)
 	  requires = {
 		  -- LSP Support
 		  {'neovim/nvim-lspconfig'},
-      {'jose-elias-alvarez/null-ls.nvim', -- many programs wrapped to LSP
+      {'nvimtools/none-ls.nvim', -- many programs wrapped to LSP
+        --'jose-elias-alvarez/null-ls.nvim', -- discontinued
         requires={{'nvim-lua/plenary.nvim'}},
         config=function() require'lamelizard.null-ls' end,
       },
