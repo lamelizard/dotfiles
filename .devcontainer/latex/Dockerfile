@@ -69,6 +69,9 @@ RUN useradd -ms /bin/bash flo
 USER flo
 WORKDIR /home/flo
 
+# break cache at this position
+ARG BREAK_CACHE="pass a new value to break the cache"
+
 # dotfiles
 RUN git clone --bare https://github.com/lamelizard/dotfiles.git $HOME/.dotfiles \
     && git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME checkout -f

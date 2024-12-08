@@ -1,7 +1,7 @@
 @echo off
 
 REM Build the Docker image using the Dockerfile in the current directory
-docker build -t "latex" .
+docker build -t "latex" --build-arg BREAK_CACHE="%time%" .
 
 REM Check if the build was successful
 IF %ERRORLEVEL% EQU 0 (
