@@ -1,4 +1,4 @@
-FROM debian:12.7
+FROM debian:12.9 AS latex
 
 RUN DEBIAN_FRONTEND=noninteractive \
     DEBCONF_NONINTERACTIVE_SEEN=true \
@@ -61,7 +61,8 @@ ENV LC_ALL=en_US.UTF-8
 RUN wget -O /nvim.appimage https://github.com/neovim/neovim/releases/download/v0.10.2/nvim.appimage \
     && chmod u+x /nvim.appimage \
     && /nvim.appimage --appimage-extract \
-    && ln -s /squashfs-root/usr/bin/nvim /usr/bin/nvim \
+    && mv /squashfs-root /appimage-nvim \
+    && ln -s /appimage-nvim/usr/bin/nvim /usr/bin/nvim \
     && rm /nvim.appimage
 
 # add new user "flo" and switch to it
@@ -88,3 +89,29 @@ RUN nvim --headless -c 'MasonInstall lua-language-server' -c 'qall'
 RUN nvim --headless -c 'MasonInstall texlab' -c 'qall'
 
 CMD ["/bin/bash"]
+
+# version with gui apps
+FROM latex AS latex-gui
+USER root
+WORKDIR /
+
+RUN DEBIAN_FRONTEND=noninteractive \
+    DEBCONF_NONINTERACTIVE_SEEN=true \
+    apt-get update \
+    && apt-get install -y --no-install-recommends \
+  #gui apps
+    zathura \
+  #clean
+    && rm -rf /var/lib/apt/lists/*
+
+# install neovide
+# does not work for WSL2: https://github.com/neovide/neovide/issues/2662
+RUN wget -O /neovide.appimage https://github.com/neovide/neovide/releases/download/0.14.0/neovide.AppImage \
+    && chmod u+x /neovide.appimage \
+    && /neovide.appimage --appimage-extract \
+    && mv /squashfs-root /appimage-neovide \
+    && ln -s /appimage-neovide/usr/bin/neovide /usr/bin/neovide \
+    && rm /neovide.appimage
+
+USER flo
+WORKDIR /home/flo
