@@ -57,6 +57,7 @@ ENV LC_ALL=en_US.UTF-8
 
 # install nvim per appimage
 # in docker: extract, as no fuse available
+# todo: unknown if using separate folders for different appimages is necessary
 # outside docker just: ln -s /nvim.appimage /usr/bin/nvim
 RUN wget -O /nvim.appimage https://github.com/neovim/neovim/releases/download/v0.10.2/nvim.appimage \
     && chmod u+x /nvim.appimage \
@@ -95,23 +96,29 @@ FROM latex AS latex-gui
 USER root
 WORKDIR /
 
+# zathura + Wayland does not work with vimtex -> force x11
+ENV GDK_BACKEND=x11
+
 RUN DEBIAN_FRONTEND=noninteractive \
     DEBCONF_NONINTERACTIVE_SEEN=true \
     apt-get update \
     && apt-get install -y --no-install-recommends \
-  #gui apps
+  #zathura
+    dbus-x11 \
+    xdotool \
+    psmisc \
     zathura \
   #clean
     && rm -rf /var/lib/apt/lists/*
 
 # install neovide
 # does not work for WSL2: https://github.com/neovide/neovide/issues/2662
-RUN wget -O /neovide.appimage https://github.com/neovide/neovide/releases/download/0.14.0/neovide.AppImage \
-    && chmod u+x /neovide.appimage \
-    && /neovide.appimage --appimage-extract \
-    && mv /squashfs-root /appimage-neovide \
-    && ln -s /appimage-neovide/usr/bin/neovide /usr/bin/neovide \
-    && rm /neovide.appimage
+#RUN wget -O /neovide.appimage https://github.com/neovide/neovide/releases/download/0.14.0/neovide.AppImage \
+#    && chmod u+x /neovide.appimage \
+#    && /neovide.appimage --appimage-extract \
+#    && mv /squashfs-root /appimage-neovide \
+#    && ln -s /appimage-neovide/usr/bin/neovide /usr/bin/neovide \
+#    && rm /neovide.appimage
 
 USER flo
 WORKDIR /home/flo
