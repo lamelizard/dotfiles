@@ -31,6 +31,7 @@ local ensure_installed = {
   "make",
   "markdown",
   -- git
+  "git_config",
   "git_rebase",
   "gitattributes",
   "gitcommit",
