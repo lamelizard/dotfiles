@@ -79,13 +79,8 @@ RUN git clone --bare https://github.com/lamelizard/dotfiles.git $HOME/.dotfiles 
     && git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME checkout -f
 
 # install nvim plugins
-# currently once to install Packer, once to install the rest
-# https://github.com/jessebot/onboardme/issues/45
-# https://github.com/wbthomason/packer.nvim/issues/502
-RUN nvim --headless -c 'autocmd User PackerComplete quitall' -c 'PackerSync'
-RUN nvim --headless -c 'autocmd User PackerComplete quitall' -c 'PackerSync'
+RUN nvim --headless -c 'Lazy! sync' -c 'qall'
 # no treesitter/LSP yet:
-RUN nvim --headless -c 'TSInstallAll' -c 'qall'
 RUN nvim --headless -c 'MasonInstall lua-language-server' -c 'qall'
 RUN nvim --headless -c 'MasonInstall texlab' -c 'qall'
 
