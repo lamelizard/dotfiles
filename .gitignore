@@ -1,0 +1,33 @@
+.dotfiles/
+
+.android/
+.cache/
+.chatgpt/
+.chocolatey/
+.config/jgit/
+.docker/
+.gnupg/
+.gradle/
+!.gradle/init.d/
+.m2/
+.matplotlib/
+.openjfx/
+.redhat/
+.vscode/
+
+Appdata/
+Contacts/
+Desktop/
+Documents/
+Downloads/
+Dropbox/
+Favorites/
+Links/
+Music/
+My Drive/
+OneDrive/
+Pictures/
+Saved Games/
+sciebo/
+Searches/
+Videos/
