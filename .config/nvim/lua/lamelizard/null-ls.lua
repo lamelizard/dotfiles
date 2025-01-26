@@ -1,3 +1,4 @@
+-- currently unused
 local nls = require('null-ls')
 
 local selected_sources = {
@@ -8,5 +9,5 @@ local selected_sources = {
 }
 
 require('null-ls').setup({
-    sources = selected_sources,
+  sources = selected_sources,
 })

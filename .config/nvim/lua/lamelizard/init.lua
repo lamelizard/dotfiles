@@ -1,6 +1,6 @@
-require('lamelizard.packer')
 require('lamelizard.sets')
 require('lamelizard.remaps')
-require('lamelizard.server')
+require('lamelizard.lazy')
+--require('lamelizard.server')
 require('lamelizard.neovide')
 require('lamelizard.vscode')
