@@ -3,7 +3,7 @@ if not vim.g.vscode then
   return
 end
 
-local vscode = require'vscode'
+local vscode = require'vscode-neovim'
 
 vim.keymap.set("n", "gr", function() vscode.call('editor.action.goToReferences') end)
 -- telescope replacement
