@@ -31,7 +31,9 @@
 	# checkout branch using fzf
 	cof = "!checkout_fzf() { git branch | fzf | xargs git checkout; }; checkout_fzf"
 	# add (multiple) files using fzf
-	addf = "!add_fzf() { git status -s | awk '{print $2}' | fzf -m | xargs git add; }; add_fzf"
+  addf = "!add_fzf() { git status -s | awk '{print $2}' | fzf -m | xargs git add; }; add_fzf"
+  # add worktree in default localtion and checkout
+  wta = "!worktree_add() { git worktree add ../$1 origin/$1 &;&; git -C ../$1 checkout -b &1 origin/$1; }; worktree_add"
 	# prefetches regulary to make everything in the repo faster
 	make-fast = maintenance start
 	aliases = config --get-regexp '^alias\\.'
