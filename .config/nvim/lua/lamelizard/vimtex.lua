@@ -20,6 +20,7 @@ end
 vim.g.vimtex_quickfix_open_on_warning = 0
 
 -- concealment (set conceallevel to 1/2 instead of 0 for effect)
+--[[
 vim.g.vimtex_syntax_conceal = {
   ['accents'] = 1,
   ['ligatures'] = 1,
@@ -35,4 +36,4 @@ vim.g.vimtex_syntax_conceal = {
   ['sections'] = 0,
   ['styles'] = 0 -- hides? '\emph' and simmilar
 }
-
+]]
