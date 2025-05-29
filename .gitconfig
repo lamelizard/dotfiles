@@ -23,6 +23,9 @@
 	s = status -sb
 	cm = commit -m
 	fp = push --force-with-lease
+	# submodules
+	smerge = submodule update --remote --merge
+	srebase = submodule update --remote --rebase
 	# note: most do not work with bare repos!
 	# branch list local (sorted by last commit)
 	bll = "!git for-each-ref --sort='-committerdate' --format='%(color:yellow)%(objectname:short)%(color:reset) - %(color:green)(%(committerdate:relative))%(color:reset) %(refname:short) %(color:bold blue)<%(authorname)>%(color:reset) %(color:red)[%(worktreepath)]%(color:reset)' refs/heads"
@@ -49,3 +52,6 @@
 	path = .gitconfig-wsl
 [includeIf "gitdir:/mnt/d/"]
 	path = .gitconfig-wsl
+[safe]
+	directory = D:/GitHub/diss
+	directory = D:/GitHub/diss-refs
