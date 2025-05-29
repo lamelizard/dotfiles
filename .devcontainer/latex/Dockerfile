@@ -1,4 +1,4 @@
-FROM debian:12.9 AS latex
+FROM debian:12.11 AS latex
 
 RUN DEBIAN_FRONTEND=noninteractive \
     DEBCONF_NONINTERACTIVE_SEEN=true \
@@ -59,7 +59,7 @@ ENV LC_ALL=en_US.UTF-8
 # in docker: extract, as no fuse available
 # todo: unknown if using separate folders for different appimages is necessary
 # outside docker just: ln -s /nvim.appimage /usr/bin/nvim
-RUN wget -O /nvim.appimage https://github.com/neovim/neovim/releases/download/v0.10.2/nvim.appimage \
+RUN wget -O /nvim.appimage https://github.com/neovim/neovim/releases/download/v0.11.1/nvim-linux-x86_64.appimage \
     && chmod u+x /nvim.appimage \
     && /nvim.appimage --appimage-extract \
     && mv /squashfs-root /appimage-nvim \
