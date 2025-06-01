@@ -18,11 +18,11 @@ if vim.g.neovide then
   end
   vim.keymap.set("n", "<C-+>", function()
     change_scale_factor(1.25)
-  end)
+  end, { desc = "zoom in" })
   vim.keymap.set("n", "<C-->", function()
     change_scale_factor(1 / 1.25)
-  end)
+  end, { desc = "zoom out" })
   vim.keymap.set("n", "<C-=>", function()
     vim.g.neovide_scale_factor = 1.0
-  end)
+  end, { desc = "reset zoom" })
 end
