@@ -58,7 +58,7 @@ vim.opt.listchars = {
   extends = '»',
 }
 vim.keymap.set("n", "<leader>vc", function ()
-    vim.wo.conceallevel = (vim.wo.conceallevel == 0) and 2 else 0
+    vim.wo.conceallevel = (vim.wo.conceallevel == 0) and 2 or 0
   end,
   { desc = "Toggle conceallevel" }
 )
