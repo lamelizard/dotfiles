@@ -48,4 +48,22 @@ vim.opt.showmatch = true
 vim.o.timeout = true
 vim.o.timeoutlen = 500
 
---vim.opt.listchars=tab:?\ ,eol:
+--character display
+vim.wo.conceallevel = 0
+vim.opt.list = false
+vim.opt.listchars = {
+  tab = '→ ',
+  trail = '·',
+  precedes = '«',
+  extends = '»',
+}
+vim.keymap.set("n", "<leader>vc", function ()
+    vim.wo.conceallevel = (vim.wo.conceallevel == 0) and 2 else 0
+  end,
+  { desc = "Toggle conceallevel" }
+)
+vim.keymap.set("n", "<leader>vw", function()
+    vim.opt.list = not vim.opt.list:get()
+  end,
+  { desc = "Toggle invisible character display" }
+)
