@@ -15,5 +15,6 @@ wk.add({
   {"<leader>fl", group="LSP"},
   {"<leader>flc", group="Calls"},
   {"<leader>e", group="Edit"},
+  {"<leader>v", group="View"},
 })
 

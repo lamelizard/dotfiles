@@ -1,6 +1,6 @@
 if vim.g.neovide then
-  -- set neovide_transparency to 0.0 if using vim background
-  vim.g.neovide_transparency = 0.9
+  -- set neovide_opacity to 0.0 if using vim background
+  vim.g.neovide_opacity = 0.9
 
   --vim.o.guifont = "Source Code Pro:h14"
 

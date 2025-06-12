@@ -39,7 +39,7 @@ vim.keymap.set("n", "<leader>Y", "gg\"+yG", {desc="yank buffer to clipboard"})
 
 --paste from clipboard
 vim.keymap.set("n", "<leader>p", "\"+p", {desc="paste from clipboard"})
-vim.keymap.set("x", "<leader>p", "\"+p", {desc="paste from clipboard"})    
+vim.keymap.set("x", "<leader>p", "\"+p", {desc="paste from clipboard"})
 
 --when pasting in v-mode, do not override the default register
 vim.keymap.set("x", "p", "\"_dP")
@@ -53,3 +53,16 @@ vim.keymap.set("i", ".", ".<c-g>u")
 vim.keymap.set("i", ",", ",<c-g>u")
 vim.keymap.set("i", ";", ";<c-g>u")
 vim.keymap.set("i", "?", "?<c-g>u")
+
+-- toggle visibility
+vim.keymap.set("n", "<leader>vc", function ()
+    vim.wo.conceallevel = (vim.wo.conceallevel == 0) and 2 or 0
+  end,
+  { desc = "Toggle conceallevel" }
+)
+vim.keymap.set("n", "<leader>vw", function()
+    vim.opt.list = not vim.opt.list:get()
+  end,
+  { desc = "Toggle invisible character display" }
+)
+

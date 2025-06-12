@@ -47,31 +47,31 @@ require("mason").setup()
 -- add(/set?) cmp as completion
 local capabilities = require("cmp_nvim_lsp").default_capabilities()
 
-require("mason-lspconfig").setup({
-  ensure_installed = {
-    "lua_ls",
-    "texlab",
+vim.lsp.config['lua_ls'] = {
+  cmd = { 'lua-language-server' },
+  filetypes = { 'lua' },
+  -- which files go together
+  root_markers = {
+    '.git',
+    vim.uv.cwd(),
   },
-  -- let lspconfig handle the setup of each server
-  handlers = {
-    function(server_name)
-      require('lspconfig')[server_name].setup({
-        capabilities = capabilities
-      })
-    end,
-    ["lua_ls"] = function()
-      local lspconfig = require("lspconfig")
-      lspconfig.lua_ls.setup {
-        capabilities = capabilities,
-        settings = {
-          Lua = {
-            diagnostics = {
-              globals = { "vim" },
-            }
-          }
-        }
-      }
-    end,
+  settings = {
+    Lua = {
+      runtime = { version = 'LuaJIT' },
+      workspace = {
+        checkThirdParty = false,
+        library = {
+          -- make 'vim' known
+          -- todo: no idea what this does exactly
+          vim.env.VIMRUNTIME,
+          "${3rd}/luv/library",
+        },
+      },
+    },
   },
-})
+}
 
+-- todo how to not have to enable them explicitly?
+-- stuff changed with nvim 0.11...
+vim.lsp.enable('lua_ls')
+vim.lsp.enable('texlab')

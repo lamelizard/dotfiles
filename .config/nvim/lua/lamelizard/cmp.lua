@@ -66,7 +66,7 @@ cmp.setup.filetype({
         option = {strategy = 2}
       },
       -- https://github.com/micangl/cmp-vimtex
-      --{name='vimtex'}
+      { name='vimtex' },
     }
   }
 )

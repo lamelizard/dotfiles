@@ -10,7 +10,7 @@ return {
     'hrsh7th/cmp-nvim-lsp',
     'hrsh7th/cmp-nvim-lua',
     -- latex
-    --'micangl/cmp-vimtex'
+    'micangl/cmp-vimtex',
     'kdheepak/cmp-latex-symbols'
     -- snippets
     --'L3MON4D3/LuaSnip',
