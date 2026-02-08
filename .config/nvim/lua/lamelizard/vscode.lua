@@ -10,7 +10,7 @@ vim.keymap.set("n", "gr", function() vscode.call('editor.action.goToReferences')
 vim.keymap.set("n", "<leader>ff", function() vscode.call('workbench.action.quickOpen') end, {desc="find files"})
 vim.keymap.set("n", "<leader>fg", function() vscode.call('workbench.action.findInFiles') end, {desc="grep"})
 vim.keymap.set("n", "<leader>fls", function() vscode.call('workbench.action.showAllSymbols') end, {desc="lsp symbols (document)"})
-vim.keymap.set("n", "<leader>flS", function() vscode.call('workbench.ion.showAllSymbols') end, {desc="lsp symbols (workspace)"})
+vim.keymap.set("n", "<leader>flS", function() vscode.call('workbench.action.showAllSymbols') end, {desc="lsp symbols (workspace)"})
 -- exists?
 vim.keymap.set("n", "<leader>flr", function() vscode.call('references-view.findReferences') end, {desc="lsp symbols (document)"})
 vim.keymap.set("n", "<leader>fca", function() vscode.call('workbench.action.showCommands') end, {desc="find commands (all)"})

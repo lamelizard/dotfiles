@@ -6,7 +6,6 @@ end
 -- diagnostics
 vim.keymap.set("n", "[x", vim.diagnostic.goto_next, { desc = "goto next diagnostic" })
 vim.keymap.set("n", "]x", vim.diagnostic.goto_prev, { desc = "goto previous diagnostic" })
-vim.keymap.set("n", "<leader>vd", vim.diagnostic.open_float, { desc = "view diagnostics" })
 -- always allow adding text without changing buffer (e.g. lsp warnings)
 vim.diagnostic.config({
   virtual_text = true,
