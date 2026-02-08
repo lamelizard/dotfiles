@@ -1,2 +1,2 @@
-@call neovide .
+@start neovide .
 exit
