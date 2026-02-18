@@ -26,6 +26,9 @@ RUN DEBIAN_FRONTEND=noninteractive \
     texlive-lang-german \
     texlive-latex-extra \
     texlive-science \
+  #huge, but needed for some papers...
+    texlive-fonts-extra \
+    texlive-bibtex-extra \
     biber \
     lmodern \
   #build & lint latex
