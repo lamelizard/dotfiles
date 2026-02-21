@@ -28,6 +28,7 @@ RUN DEBIAN_FRONTEND=noninteractive \
     texlive-science \
   #huge, but needed for some papers...
     texlive-fonts-extra \
+    texlive-publishers \
     texlive-bibtex-extra \
     biber \
     lmodern \
