@@ -1,4 +1,4 @@
-FROM debian:12.11 AS latex
+FROM debian:13.3-slim AS latex
 
 RUN DEBIAN_FRONTEND=noninteractive \
     DEBCONF_NONINTERACTIVE_SEEN=true \
@@ -41,7 +41,7 @@ RUN DEBIAN_FRONTEND=noninteractive \
     hunspell-de-de \
   #further
     shfmt \
-    openjdk-17-jre-headless \
+    openjdk-21-jre-headless \
   #clean
     && rm -rf /var/lib/apt/lists/*
 
