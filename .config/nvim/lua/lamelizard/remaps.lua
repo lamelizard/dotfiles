@@ -14,7 +14,7 @@ vim.keymap.set("v", ";", ":")
 vim.keymap.set("v", ":", ";")
 
 --search and replace since I can never remember the keys
-vim.keymap.set("n", "<leader>fr", ":s///g<Left><Left><Left>", {desc="search and replace"})
+vim.keymap.set("n", "<leader>fr", ":%s///g<Left><Left><Left>", {desc="search and replace"})
 
 --small changes to how vim works
 
