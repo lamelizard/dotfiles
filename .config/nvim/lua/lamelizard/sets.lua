@@ -5,6 +5,8 @@ vim.opt.fileformat = "unix"
 --Security
 vim.opt.modelines = 0
 
+vim.opt.swapfile = false
+
 --source .vimrc inside project folder
 vim.opt.exrc = true
 
