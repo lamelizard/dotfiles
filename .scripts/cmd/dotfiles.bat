@@ -4,6 +4,7 @@ if "%~1" == "" (
   where lazygit >nul 2>&1
   if %errorlevel% == 0 (
     lazygit --git-dir="%USERPROFILE%\.dotfiles" --work-tree="%USERPROFILE%"
+    exit /b
   ) else (
     echo Usage: %~nx0 arguments (or have lazygit installed) & exit /b 1
   )
