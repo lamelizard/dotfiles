@@ -2,19 +2,19 @@
 
 # check if inside a chroot
 if [ -z "$debian_chroot" ] && [ -r /etc/debian_chroot ]; then
-    debian_chroot=$(cat /etc/debian_chroot)
+  debian_chroot=$(cat /etc/debian_chroot)
 fi
 
 #show user@host iff ssh-ing
 if [ -n "$SSH_CLIENT" ] || [ -n "$SSH_TTY" ]; then
-        ps_user="\u"
-		ps_host="\h"
+  ps_user="\u"
+  ps_host="\h"
 fi
 
 PS1=''
 PS1+='${debian_chroot:+${White}($debian_chroot)}'
 PS1+='${ps_user:+${Blue}$ps_user}'
-if [ -z "ps_user" ] && [ -z "ps_host" ]; then
+if [ -z "$ps_user" ] && [ -z "$ps_host" ]; then
   PS1+="${White}@"
 fi
 PS1+='${ps_host:+${Green}$ps_host}'

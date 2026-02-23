@@ -11,10 +11,10 @@ stty -ixon
 # edit like vi
 # set -o vi
 
-#don't write "cd"
+# don't write "cd"
 shopt -s autocd
 
-#enable globstar **
+# enable globstar **
 shopt -s globstar
 
 # check the window size after each command and, if necessary,
@@ -22,18 +22,18 @@ shopt -s globstar
 shopt -s checkwinsize
 
 # Path
-export PATH="$HOME/.bin:$PATH"
+[ -d "$HOME/.bin" ] && export PATH="$HOME/.bin:$PATH"
 # snap
-export PATH="/snap/bin:$PATH"
+[ -d "/snap/bin" ] && export PATH="/snap/bin:$PATH"
 
 # Alias definitions.
 if [ -f ~/.bash_aliases ]; then
-    . ~/.bash_aliases
+  . ~/.bash_aliases
 fi
 
 # FZF completion
 if [ -f ~/.bash_fzf ]; then
-    . ~/.bash_fzf
+  . ~/.bash_fzf
 fi
 
 # prompt
@@ -91,8 +91,12 @@ export LESS_TERMCAP_us=$'\e[1;4;31m'
 export SECRET_SEARCH_UNLOCK=1
 
 # start tmux with bash (if it exists)
-if command -v tmux &> /dev/null && [ -n "$PS1" ] && [[ ! "$TERM" =~ screen ]] && [[ ! "$TERM" =~ tmux ]] && [ -z "$TMUX" ]; then
-    # Check if a bash -c command is being executed
+if command -v tmux &> /dev/null \
+    && [ -n "$PS1" ] \
+    && [[ ! "$TERM" =~ screen ]] \
+    && [[ ! "$TERM" =~ tmux ]] \
+    && [ -z "$TMUX" ]; then
+  # Check if a bash -c command is being executed
   if [[ ! -n "$BASH_COMMAND" ]]; then
     exec tmux -u
   fi
